@@ -1,6 +1,5 @@
 /*
-1. Crie uma função que pergunte o nome e o salário de um
-colaborador;
+1. Crie uma função que pergunte o nome e o salário de umcolaborador;
 2. Depois crie uma função que irá calcular o aumento de salário
 conforme a seguinte tabela:
 ATÉ R$1.500,00 : aumento de 20%
@@ -23,10 +22,11 @@ salário R$1.000,00 aumento de 15%
 
 var nome = ""
 var salario = 0
+var aumentoSalarial = 0
 
 nome = PerguntarNome(nome)
 salario = PerguntarSalario(salario)
-
+aumentoSalarial = aumentoSalarial(salario)
 
 function PerguntarNome(nome){
     nome =  prompt("Informe o seu nome.")
@@ -37,3 +37,21 @@ function PerguntarSalario(salario){
     salario =  parseInt(prompt("Informe o seu salário."))
     return salario
 }
+
+function aumentoSalarial(salario){
+    if(salario<1501){
+        salario = (salario / 100) * 120
+    }
+    if(salario>1500 && salario<2001){
+        salario = (salario / 100) * 115
+    }
+    if(salario>2000 && salario<3001){
+        salario = (salario / 100) * 110
+    }
+    if(salario>3000){
+        salario = (salario / 100) * 105
+    }
+
+    return salario
+}
+
