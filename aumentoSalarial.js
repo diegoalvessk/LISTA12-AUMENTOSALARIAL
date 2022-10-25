@@ -22,40 +22,48 @@ salário R$1.000,00 aumento de 15%
 var nome = ""
 var salario = 0
 var aumento = 0
+var condicao = "1"
 
-nome = PerguntarNome(nome)
-salario = PerguntarSalario(salario)
-aumento = aumentoSalarial(salario, nome, aumento)
+while(condicao == 1){
+            nome = PerguntarNome(nome)
+            salario = PerguntarSalario(salario)
+            aumento = aumentoSalarial(salario, nome, aumento)
+            condicao = desejaContinuar(condicao)
+            function PerguntarNome(nome){
+                nome =  prompt("Informe o seu nome.")
+                return nome
+            }
 
-function PerguntarNome(nome){
-    nome =  prompt("Informe o seu nome.")
-    return nome
-}
+            function PerguntarSalario(salario){
+                salario =  parseInt(prompt("Informe o seu salário."))
+                return salario
+            }
 
-function PerguntarSalario(salario){
-    salario =  parseInt(prompt("Informe o seu salário."))
-    return salario
-}
+            function aumentoSalarial(salario, nome, aumento){
+                var porcentagem = 0
+                if(salario<1501){
+                    aumento = salario * 1.20
+                    porcentagem = 20
+                }
+                if(salario>1500 && salario<2001){
+                    aumento = salario * 1.15
+                    porcentagem = 15
+                }
+                if(salario>2000 && salario<3001){
+                    aumento = salario * 1.10       
+                    porcentagem = 10
+                }
+                if(salario>3000){
+                    aumento = salario * 1.05
+                    porcentagem = 5
+                }
 
-function aumentoSalarial(salario, nome, aumento){
-    var porcentagem = 0
-    if(salario<1501){
-        aumento = (salario / 100) * 120
-        porcentagem = 20
-    }
-    if(salario>1500 && salario<2001){
-        aumento = (salario / 100) * 115
-        porcentagem = 15
-    }
-    if(salario>2000 && salario<3001){
-        aumento = (salario / 100) * 110
-        porcentagem = 10
-    }
-    if(salario>3000){
-        aumento = (salario / 100) * 105
-        porcentagem = 5
-    }
+                alert("Olá " + nome + " seu salário era de " + salario + " ele aumentou " + porcentagem + "%. Ficando assim no valor de: " + aumento + " por mês")
+            }
 
-    alert("Olá " + nome + " seu salário era de " + salario + " ele aumentou " + porcentagem + "%. Ficando assim no valor de: " + aumento + " por mês")
-}
+            function desejaContinuar(condicao){
+                condicao =  parseInt(prompt("Deseja calcular novamente com novas informações? sim = 1; não = 2"))
+                return condicao
+            }
 
+        }
